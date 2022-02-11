@@ -1,0 +1,28 @@
+﻿{
+  "$schema": "https://raw.githubusercontent.com/bsmg/BSIPA-MetadataFileSchema/master/Schema.json",
+  "id": "EnhancedMissCounter",
+  "name": "EnhancedMissCounter",
+  "author": "Catse",
+  "version": "1.0.0",
+  "description": "",
+  "gameVersion": "1.11.1",
+  "dependsOn": {
+    "BSIPA": "^4.0.5"
+  },
+  "features": {
+    "CountersPlus.CustomCounter": {
+      "Name": "Enhanced Miss Counter",
+      "CounterLocation": "EnhancedMissCounter.CustomCounter",
+      "ConfigDefaults": {
+        "Enabled": true,
+        "Position": "BelowCombo",
+        "Distance": 0
+      },
+      "BSML": {
+        "Resource": "EnhancedMissCounter.SettingsUI.bsml",
+        "Host": "EnhancedMissCounter.TestUIHost",
+        "Icon": "EnhancedMissCounter.icon.png"
+      }
+    }
+  }
+}
