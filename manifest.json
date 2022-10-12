@@ -13,6 +13,7 @@
     "CountersPlus.CustomCounter": {
       "Name": "Enhanced Miss Counter",
       "CounterLocation": "EnhancedMissCounter.CustomCounter",
+      "MultiplayerReady": true,
       "ConfigDefaults": {
         "Enabled": true,
         "Position": "BelowCombo",
