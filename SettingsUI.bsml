@@ -6,4 +6,6 @@
 	<color-setting text='Less Misses Color' apply-on-change='true' value='LessColor' hover-hint='meow'/>
 	<color-setting text='Equal Misses Color' apply-on-change='true' value='EqualColor' hover-hint='meow'/>
 	<color-setting text='More Misses Color' apply-on-change='true' value='MoreColor' hover-hint='meow'/>
+	<bool-setting text='Use ScoreSaber' apply-on-change='true' value='UseScoreSaber' hover-hint='meow'/>
+	<bool-setting text='Use BeatLeader' apply-on-change='true' value='UseBeatLeader' hover-hint='meow'/>
 </vertical>
