@@ -7,8 +7,8 @@
     <ProjectGuid>{201E6217-13F9-4C86-9038-F01179EBEBC2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EnhancedMissCounter</RootNamespace>
-    <AssemblyName>EnhancedMissCounter</AssemblyName>
+    <RootNamespace>BetterMissCounter</RootNamespace>
+    <AssemblyName>BetterMissCounter</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
