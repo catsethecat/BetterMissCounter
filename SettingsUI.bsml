@@ -1,11 +1,16 @@
 ﻿<vertical xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='https://monkeymanboy.github.io/BSML-Docs/ https://raw.githubusercontent.com/monkeymanboy/BSML-Docs/gh-pages/BSMLSchema.xsd' spacing='1' horizontal-fit='PreferredSize' vertical-fit='PreferredSize'>
+	<slider-setting text='Counter X Offset' hover-hint='Pushes the entire counter around horizontally.' min='-20' max='20' increment='0.1' value='CounterXOffset' show-buttons='true' apply-on-change='true' bind-value='true'/>
+	<slider-setting text='Counter Y Offset' hover-hint='Pushes the entire counter around vertically.' min='-20' max='20' increment='0.1' value='CounterYOffset' show-buttons='true' apply-on-change='true' bind-value='true'/>
 	<string-setting text='Top Text' apply-on-change='true' value='TopText' hover-hint='OwO'/>
 	<color-setting text='Top Text Color' apply-on-change='true' value='TopColor' hover-hint='i like pp'/>
+	<bool-setting text='Top Text Bloom' apply-on-change='true' value='TopBloom' hover-hint='hello'/>
 	<string-setting text='Bottom Text' apply-on-change='true' value='BottomText' hover-hint='UwU'/>
 	<color-setting text='Bottom Text Color' apply-on-change='true' value='BottomColor' hover-hint='delicious pp'/>
+	<bool-setting text='Bottom Text Bloom' apply-on-change='true' value='BottomBloom' hover-hint='hello'/>
 	<color-setting text='Less Misses Color' apply-on-change='true' value='LessColor' hover-hint='meow'/>
 	<color-setting text='Equal Misses Color' apply-on-change='true' value='EqualColor' hover-hint='meow'/>
 	<color-setting text='More Misses Color' apply-on-change='true' value='MoreColor' hover-hint='meow'/>
 	<bool-setting text='Use ScoreSaber' apply-on-change='true' value='UseScoreSaber' hover-hint='meow'/>
 	<bool-setting text='Use BeatLeader' apply-on-change='true' value='UseBeatLeader' hover-hint='meow'/>
+	<bool-setting text='Misses Bloom' apply-on-change='true' value='MissesBloom' hover-hint='hello'/>
 </vertical>

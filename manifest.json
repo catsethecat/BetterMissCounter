@@ -3,7 +3,7 @@
   "id": "BetterMissCounter",
   "name": "BetterMissCounter",
   "author": "Catse",
-  "version": "1.1.0",
+  "version": "1.3.0",
   "description": "",
   "gameVersion": "1.11.1",
   "dependsOn": {
@@ -13,6 +13,7 @@
     "CountersPlus.CustomCounter": {
       "Name": "Better Miss Counter",
       "CounterLocation": "BetterMissCounter.CustomCounter",
+      "MultiplayerReady": true,
       "ConfigDefaults": {
         "Enabled": true,
         "Position": "BelowCombo",

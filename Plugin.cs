@@ -47,29 +47,38 @@ namespace BetterMissCounter
     class TestConfig
     {
         public static TestConfig Instance { get; set; }
+        public virtual float CounterXOffset { get; set; } = 0.0f;
+        public virtual float CounterYOffset { get; set; } = 0.0f;
         public virtual string TopText { get; set; } = "Misses";
         public virtual Color TopColor { get; set; } = Color.white;
+        public virtual bool TopBloom { get; set; } = false;
         public virtual string BottomText { get; set; } = "PB: ";
         public virtual Color BottomColor { get; set; } = Color.white;
+        public virtual bool BottomBloom { get; set; } = false;
         public virtual Color LessColor { get; set; } = Color.white;
         public virtual Color EqualColor { get; set; } = Color.yellow;
         public virtual Color MoreColor { get; set; } = Color.red;
         public virtual bool UseScoreSaber { get; set; } = true;
         public virtual bool UseBeatLeader { get; set; } = true;
+        public virtual bool MissesBloom { get; set; } = true;
     }
 
     class TestUIHost
     {
-
+        public float CounterXOffset { get => TestConfig.Instance.CounterXOffset; set => TestConfig.Instance.CounterXOffset = value; }
+        public float CounterYOffset { get => TestConfig.Instance.CounterYOffset; set => TestConfig.Instance.CounterYOffset = value; }
         public string TopText { get => TestConfig.Instance.TopText; set => TestConfig.Instance.TopText = value; }
         public Color TopColor { get => TestConfig.Instance.TopColor; set => TestConfig.Instance.TopColor = value; }
+        public bool TopBloom { get => TestConfig.Instance.TopBloom; set => TestConfig.Instance.TopBloom = value; }
         public string BottomText { get => TestConfig.Instance.BottomText; set => TestConfig.Instance.BottomText = value; }
         public Color BottomColor { get => TestConfig.Instance.BottomColor; set => TestConfig.Instance.BottomColor = value; }
+        public bool BottomBloom { get => TestConfig.Instance.BottomBloom; set => TestConfig.Instance.BottomBloom = value; }
         public Color LessColor { get => TestConfig.Instance.LessColor; set => TestConfig.Instance.LessColor = value; }
         public Color EqualColor { get => TestConfig.Instance.EqualColor; set => TestConfig.Instance.EqualColor = value; }
         public Color MoreColor { get => TestConfig.Instance.MoreColor; set => TestConfig.Instance.MoreColor = value; }
         public bool UseScoreSaber { get => TestConfig.Instance.UseScoreSaber; set => TestConfig.Instance.UseScoreSaber = value; }
         public bool UseBeatLeader { get => TestConfig.Instance.UseBeatLeader; set => TestConfig.Instance.UseBeatLeader = value; }
+        public bool MissesBloom { get => TestConfig.Instance.MissesBloom; set => TestConfig.Instance.MissesBloom = value; }
     }
 
     public class CustomCounter : CountersPlus.Counters.Custom.BasicCustomCounter, INoteEventHandler
@@ -91,18 +100,40 @@ namespace BetterMissCounter
         public override void CounterInit()
         {
 
-            TMP_Text topText = CanvasUtility.CreateTextFromSettings(Settings);
-            missText = CanvasUtility.CreateTextFromSettings(Settings, new Vector3(0, -0.35f, 0));
-            bottomText = CanvasUtility.CreateTextFromSettings(Settings, new Vector3(0, -0.65f, 0));
+            TMP_Text topText = CanvasUtility.CreateTextFromSettings(Settings, new Vector3(
+                0 + TestConfig.Instance.CounterXOffset,
+                0 + TestConfig.Instance.CounterYOffset,
+                0));
+            missText = CanvasUtility.CreateTextFromSettings(Settings, new Vector3(
+                0+TestConfig.Instance.CounterXOffset, 
+                -0.35f+TestConfig.Instance.CounterYOffset,
+                0)
+                );
+            bottomText = CanvasUtility.CreateTextFromSettings(Settings, new Vector3(
+                0 + TestConfig.Instance.CounterXOffset,
+                -0.65f + TestConfig.Instance.CounterYOffset,
+                0));
 
             topText.fontSize = 3f;
             topText.text = TestConfig.Instance.TopText;
             topText.color = TestConfig.Instance.TopColor;
+            if (TestConfig.Instance.TopBloom)
+            {
+                topText.font = BloomFontAssetMaker.instance.BloomFontAsset();
+            }
             missText.fontSize = 4f;
             missText.text = "0";
             missText.color = TestConfig.Instance.LessColor;
+            if (TestConfig.Instance.MissesBloom)
+            {
+                missText.font = BloomFontAssetMaker.instance.BloomFontAsset();
+            }
             bottomText.fontSize = 2f;
             bottomText.color = TestConfig.Instance.BottomColor;
+            if (TestConfig.Instance.BottomBloom)
+            {
+                bottomText.font= BloomFontAssetMaker.instance.BloomFontAsset();
+            }   
 
             IDifficultyBeatmap beatmap = data.difficultyBeatmap;
 
