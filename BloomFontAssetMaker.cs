@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 
-namespace EnhancedMissCounter
+namespace BetterMissCounter
 {
     internal class BloomFontAssetMaker:PersistentSingleton<BloomFontAssetMaker>
     {
