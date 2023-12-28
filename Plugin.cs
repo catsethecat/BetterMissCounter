@@ -3,7 +3,6 @@ using IPALogger = IPA.Logging.Logger;
 using CountersPlus.Counters.Interfaces;
 using TMPro;
 using BS_Utils.Gameplay;
-using Zenject;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -12,6 +11,7 @@ using System.Threading;
 using IPA.Config.Stores;
 using System.Web;
 using System.Runtime.CompilerServices;
+using System.Linq;
 
 [assembly: InternalsVisibleTo(GeneratedStore.AssemblyVisibilityTarget)]
 namespace BetterMissCounter
@@ -34,7 +34,6 @@ namespace BetterMissCounter
         public void OnApplicationStart()
         {
             Plugin.Log.Info("meow");
-
         }
 
         [OnExit]
@@ -88,7 +87,14 @@ namespace BetterMissCounter
         int missCount = 0;
         int PBMissCount = -1;
 
-        [Inject] private GameplayCoreSceneSetupData data;
+        private readonly GameplayCoreSceneSetupData _data;
+        private readonly TMP_FontAsset bloomFontAsset;
+
+        CustomCounter(GameplayCoreSceneSetupData gameplayCoreSceneSetupData)
+        {
+            _data = gameplayCoreSceneSetupData;
+            bloomFontAsset = Resources.FindObjectsOfTypeAll<TMP_FontAsset>().FirstOrDefault(x => x.name == "Malgun Gothic");
+        }
 
         int difficultyRank;
         string difficulty;
@@ -119,23 +125,23 @@ namespace BetterMissCounter
             topText.color = TestConfig.Instance.TopColor;
             if (TestConfig.Instance.TopBloom)
             {
-                topText.font = BloomFontAssetMaker.instance.BloomFontAsset();
+                topText.font = bloomFontAsset;
             }
             missText.fontSize = 4f;
             missText.text = "0";
             missText.color = TestConfig.Instance.LessColor;
             if (TestConfig.Instance.MissesBloom)
             {
-                missText.font = BloomFontAssetMaker.instance.BloomFontAsset();
+                missText.font = bloomFontAsset;
             }
             bottomText.fontSize = 2f;
             bottomText.color = TestConfig.Instance.BottomColor;
             if (TestConfig.Instance.BottomBloom)
             {
-                bottomText.font= BloomFontAssetMaker.instance.BloomFontAsset();
+                bottomText.font= bloomFontAsset;
             }   
 
-            IDifficultyBeatmap beatmap = data.difficultyBeatmap;
+            IDifficultyBeatmap beatmap = _data.difficultyBeatmap;
 
             if (beatmap.level.levelID.IndexOf("custom_level_") != -1) {
                 difficultyRank = beatmap.difficultyRank;
