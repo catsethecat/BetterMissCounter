@@ -93,7 +93,7 @@ namespace BetterMissCounter
         CustomCounter(GameplayCoreSceneSetupData gameplayCoreSceneSetupData)
         {
             _data = gameplayCoreSceneSetupData;
-            bloomFontAsset = Resources.FindObjectsOfTypeAll<TMP_FontAsset>().FirstOrDefault(x => x.name == "Malgun Gothic");
+            bloomFontAsset = Resources.FindObjectsOfTypeAll<TMP_FontAsset>().FirstOrDefault(x => x.name == "Teko-Bold SDF");
         }
 
         int difficultyRank;
